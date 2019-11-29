@@ -47,6 +47,10 @@ const DashboardTabNavigator = createBottomTabNavigator(
     },
   },
   {
+    tabBarOptions: {
+      showIcon: true,
+      showLabel: false
+    },
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
