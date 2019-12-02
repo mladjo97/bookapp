@@ -1,26 +1,38 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 
-const BookCard = ({ title, ...props }) => {
+const BookCard = ({ title, coverUrl, ...props }) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
+      <Image
+        style={styles.cover}
+        source={{ uri: coverUrl }}
+      />
     </View>
   )
 };
 
 const styles = StyleSheet.create({
   card: {
-    width: 150,
+    margin: 15,
+    // width of elements is weird one touchableopacity is added
+    // 2 - items per row
+    // 30 - random number so cards fit the screen
+    width: Math.round(Dimensions.get('window').width) / 2 - 30,
     height: 300,
-    backgroundColor: 'blue',
-    margin: 20,
-    alignItems: 'center',
-    justifyContent: 'center'
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3
   },
-  title: {
-    color: 'white',
-    fontSize: 16
+  cover: {
+    resizeMode: 'cover',
+    width: '100%',
+    height: '100%'
   }
 });
 
