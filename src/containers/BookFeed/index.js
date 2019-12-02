@@ -1,43 +1,31 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
+import MasonryList from 'react-native-masonry-list';
 
 import BookCard from '../../components/BookCard';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
 import { getBooks } from '../../api';
 
 const BookFeed = ({ navigation, ...props }) => {
 
   const books = getBooks();
 
+  onCardPressHandler = (book) => {
+    navigation.push('BookDetails', { book });
+  }
+
   renderBook = (book) => {
     return (
-      <View>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={onCardPressHandler}
-        >
-          <BookCard
-            coverUrl={book.image}
-            title={book.title}
-          />
-        </TouchableOpacity>
-      </View>
+      <BookCard
+        book={book}
+        onClick={onCardPressHandler}
+      />
     )
   }
 
-  onCardPressHandler = () => {
-    console.log(props);
-  }
 
   return (
     <View style={styles.feed}>
-      <FlatList
-        data={books}
-        keyExtractor={book => book.isbn}
-        numColumns={2}
-        renderItem={({ item }) => renderBook(item)}
-    />
+      <MasonryList onPressImage={onCardPressHandler} images={books} />
     </View>
   )
 };

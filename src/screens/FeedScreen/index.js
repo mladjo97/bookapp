@@ -5,7 +5,7 @@ import BookFeed from '../../containers/BookFeed';
 const FeedScreen = ({ ...props }) => {
   return (
     <View style={styles.screen}>
-      <BookFeed />
+      <BookFeed navigation={props.navigation} />
     </View>
   );
 };

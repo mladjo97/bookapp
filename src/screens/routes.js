@@ -14,6 +14,8 @@ import WelcomeScreen from './WelcomeScreen';
 import ProfileScreen from './ProfileScreen';
 import FeedScreen from './FeedScreen';
 import SettingsScreen from './SettingsScreen';
+import BookDetailsScreen from './BookDetailsScreen';
+
 
 // Dashboard Tab Navigation
 const DashboardTabNavigator = createBottomTabNavigator(
@@ -63,7 +65,22 @@ const DashboardTabNavigator = createBottomTabNavigator(
 // Dashboard Stack Navigation
 const DashboardStackNavigator = createStackNavigator(
   {
-    DashboardTabNavigator: DashboardTabNavigator
+    DashboardTabNavigator,
+    BookDetails: {
+      screen: BookDetailsScreen,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: navigation.getParam('book').title,
+          headerLeft: (
+            <MaterialIcons 
+              name="keyboard-arrow-left" 
+              size={30} 
+              onPress={() => navigation.pop()}
+              />
+          )
+        }
+      }     
+    }
   },
   {
     defaultNavigationOptions: ({ navigation }) => {

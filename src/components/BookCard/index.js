@@ -1,14 +1,24 @@
 import React from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const BookCard = ({ title, coverUrl, ...props }) => {
+const BookCard = ({ book, onClick, ...props }) => {
+
+  onCardPressHandler = () => {
+    onClick(book);
+  }
+
   return (
-    <View style={styles.card}>
-      <Image
-        style={styles.cover}
-        source={{ uri: coverUrl }}
-      />
-    </View>
+    <TouchableOpacity
+      onPress={onCardPressHandler}
+    >
+      <View style={styles.card} >
+        <Image
+          style={styles.cover}
+          source={{ uri: book.image }}
+        />
+      </View>
+    </TouchableOpacity>
   )
 };
 
@@ -23,11 +33,11 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 2,
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
-    elevation: 3
+    elevation: 5
   },
   cover: {
     width: '100%',

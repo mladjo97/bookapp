@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 const WelcomeScreen = ({ ...props }) => {
+  console.log(props.navigation)
   return (
     <View style={styles.screen}>
       <Text>Welcome Screen!</Text>
