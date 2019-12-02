@@ -1,5 +1,5 @@
-import books from './books.json';
+const books = require('./books.json');
 
 export const getBooks = () => {
   return books;
-};
+}

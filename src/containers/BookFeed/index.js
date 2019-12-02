@@ -1,22 +1,37 @@
-import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { View, StyleSheet } from 'react-native';
 import MasonryList from 'react-native-masonry-list';
 
-import { getBooks } from '../../api';
+import {
+  booksSelector,
+  isFetchedSelector,
+  errorSelector 
+} from '../../reducers/books';
+import { getBooks } from '../../actions/books';
 
-const BookFeed = ({ navigation, ...props }) => {
 
-  const books = getBooks();
-
+class BookFeed extends Component {
+ 
   onCardPressHandler = (book) => {
-    navigation.push('BookDetails', { book });
+    this.props.navigation.push('BookDetails', { book });
   }
 
-  return (
-    <View style={styles.feed}>
-      <MasonryList onPressImage={onCardPressHandler} images={books} />
-    </View>
-  )
+  componentDidMount() {
+    console.log('BookFeed didMound!');
+    this.props.getBooks();
+  }
+  
+  render() {
+    return (
+      <View style={styles.feed}>
+        <MasonryList
+          onPressImage={this.onCardPressHandler} 
+          images={this.props.books}
+        />
+      </View>
+    )
+  }
 };
 
 const styles = StyleSheet.create({
@@ -27,4 +42,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default BookFeed;
+const mapStateToProps = (state) => {
+  return {
+    books: booksSelector(state),
+    isFetched: isFetchedSelector(state),
+    error: errorSelector(state)
+  }
+};
+
+const mapDispatchToProps = {
+  getBooks
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookFeed);
