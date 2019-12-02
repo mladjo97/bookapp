@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+// this component is not really needed, because we use react-native-masonry-list package
 const BookCard = ({ book, onClick, ...props }) => {
 
   onCardPressHandler = () => {
@@ -15,7 +16,7 @@ const BookCard = ({ book, onClick, ...props }) => {
       <View style={styles.card} >
         <Image
           style={styles.cover}
-          source={{ uri: book.image }}
+          source={{ uri: book.uri }}
         />
       </View>
     </TouchableOpacity>

@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 import MasonryList from 'react-native-masonry-list';
 
-import BookCard from '../../components/BookCard';
 import { getBooks } from '../../api';
 
 const BookFeed = ({ navigation, ...props }) => {
@@ -12,16 +11,6 @@ const BookFeed = ({ navigation, ...props }) => {
   onCardPressHandler = (book) => {
     navigation.push('BookDetails', { book });
   }
-
-  renderBook = (book) => {
-    return (
-      <BookCard
-        book={book}
-        onClick={onCardPressHandler}
-      />
-    )
-  }
-
 
   return (
     <View style={styles.feed}>
