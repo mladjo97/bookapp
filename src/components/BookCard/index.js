@@ -14,12 +14,12 @@ const BookCard = ({ title, coverUrl, ...props }) => {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 15,
+    margin: 10,
     // width of elements is weird one touchableopacity is added
     // 2 - items per row
-    // 30 - random number so cards fit the screen
-    width: Math.round(Dimensions.get('window').width) / 2 - 30,
-    height: 300,
+    // 10- margin*2 so cards fit the screen
+    width: Math.round(Dimensions.get('window').width) / 2 - 20,
+    height: 290,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -30,9 +30,9 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   cover: {
-    resizeMode: 'cover',
     width: '100%',
-    height: '100%'
+    height: '100%',
+    resizeMode: 'stretch'
   }
 });
 
