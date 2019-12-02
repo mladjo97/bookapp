@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import BookFeed from '../../containers/BookFeed';
 
 const FeedScreen = ({ ...props }) => {
   return (
     <View style={styles.screen}>
-      <Text>Feed Screen!</Text>
+      <BookFeed />
     </View>
   );
 };

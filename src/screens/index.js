@@ -60,6 +60,7 @@ const DashboardTabNavigator = createBottomTabNavigator(
   }
 );
 
+// Dashboard Stack Navigation
 const DashboardStackNavigator = createStackNavigator(
   {
     DashboardTabNavigator: DashboardTabNavigator
