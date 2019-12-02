@@ -1,1 +1,1 @@
-![Feed Screen](./feed.png)
+![Feed Screen](./feed.jpg)

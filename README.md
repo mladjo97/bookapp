@@ -1,2 +1,2 @@
 ## Images
-(images)[./docs/images/images.md]
+[images](./docs/images/images.md)
