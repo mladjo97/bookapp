@@ -5,8 +5,11 @@ import { View, Text, Image, Button } from 'react-native';
 import styles from './styles';
 import { setBookmark, removeBookmark } from '../../actions/books';
 import { bookmarkedBooksSelector } from '../../reducers/books';
+import RatingDialog from '../../components/RatingDialog';
 
 const BookDetails = ({ book, ...props }) => {
+
+  const [isDialogVisible, setDialogVisibility] = useState(false);
 
   const onBookmarkHandler = () => {
     props.setBookmark(book.id);
@@ -17,11 +20,27 @@ const BookDetails = ({ book, ...props }) => {
   }
 
   const onRatingHandler = () => {
-    console.log('Give a rating');
+    setDialogVisibility(true);
+  }
+
+  const onDialogSubmitHandler = (rating) => {
+    console.log('Submitting rating: ', rating);
+    setDialogVisibility(false);
+  }
+
+  const onDialogCloseHandler = () => {
+    setDialogVisibility(false);
   }
 
   return (
     <View style={styles.screen}>
+
+      <RatingDialog
+        isVisible={isDialogVisible}
+        onCancel={onDialogCloseHandler}
+        onSubmit={onDialogSubmitHandler} 
+      />
+
       <View style={styles.header}>
         {/* Book Cover */}
         <Image

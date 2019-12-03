@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, Text, RefreshControl, Button } from 'react-native';
+import { View, StyleSheet, Text, RefreshControl, Button, Vibration } from 'react-native';
 import MasonryList from 'react-native-masonry-list';
 
 import {
@@ -14,7 +14,8 @@ import { getBooks } from '../../actions/books';
 class BookFeed extends Component {
   
   onCardPressHandler = (book) => {
-    this.props.navigation.push('BookDetails', { book });
+    const { navigation } = this.props;
+    navigation.push('BookDetails', { book });
   }
 
   onRefreshHandler = () => {
@@ -26,7 +27,6 @@ class BookFeed extends Component {
   }
   
   render() {
-    console.log(this.props.books);
     return (
       <View style={styles.feed}>
         {

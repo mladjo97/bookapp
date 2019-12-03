@@ -6,18 +6,18 @@ import MasonryList from 'react-native-masonry-list';
 import { bookmarkedBooksSelector } from '../../reducers/books';
 
 const BookmarkFeed = ({ navigation, ...props }) => {
- 
+
   onCardPressHandler = (book) => {
     navigation.push('BookDetails', { book });
   }
-  
+
   return (
     <View style={styles.feed}>
       {
         props.bookmarkedBooks.length ?
           <MasonryList
-            onPressImage={onCardPressHandler} 
-            images={props.bookmarkedBooks}       
+            onPressImage={onCardPressHandler}
+            images={props.bookmarkedBooks}
           /> :
           <Text style={{ textAlign: 'center' }}>You have no bookmarks.</Text>
       }
