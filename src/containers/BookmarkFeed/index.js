@@ -15,7 +15,7 @@ const BookmarkFeed = ({ navigation, ...props }) => {
     <View style={styles.feed}>
       <MasonryList
         onPressImage={onCardPressHandler} 
-        images={props.bookmarkedBooks}
+        images={props.bookmarkedBooks}       
       />
     </View>
   )
