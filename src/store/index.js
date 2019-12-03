@@ -9,7 +9,7 @@ const configureStore = (initialState = {}) => {
     const middlewares = [thunkMiddleware, apiMiddleware];
 
     const loggerMiddleware = createLogger();
-    middlewares.push(loggerMiddleware);
+    // middlewares.push(loggerMiddleware);
 
     return createStore(
         rootReducer,
