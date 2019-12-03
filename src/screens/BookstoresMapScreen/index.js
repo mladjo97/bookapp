@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import BookstoresMap from '../../components/BookstoresMap';
 
-const ProfileScreen = ({ ...props }) => {
+const BookstoresMapScreen = ({ ...props }) => {
   return (
     <View style={styles.screen}>
-      <Text>ProfileScreen</Text>
+      <BookstoresMap />
     </View>
   );
 }
@@ -17,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ProfileScreen;
+export default BookstoresMapScreen;

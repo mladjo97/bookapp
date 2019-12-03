@@ -10,7 +10,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import ProfileScreen from '../screens/ProfileScreen';
+import BookstoresMapScreen from '../screens/BookstoresMapScreen';
 import FeedScreen from '../screens/FeedScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import BookDetailsScreen from '../screens/BookDetailsScreen';
@@ -38,12 +38,12 @@ const DashboardTabNavigator = createBottomTabNavigator(
         }
       }
     },
-    Profile: {
-      screen: ProfileScreen,
+    Bookstores: {
+      screen: BookstoresMapScreen,
       navigationOptions: {
         tabBarIcon: ({ focused }) => {
-          const iconName = `person${focused ? '' : '-outline'}`;
-          return <MaterialIcons name={iconName} size={30} />
+          const iconName = `map${focused ? '' : '-outline'}`;
+          return <MaterialCommunityIcons name={iconName} size={30} />
         }
       }
     },
