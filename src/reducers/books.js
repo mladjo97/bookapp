@@ -1,13 +1,13 @@
-import mapper from '../utils/mapper';
-
 import {
   GET_BOOKS_REQUEST,
   GET_BOOKS_SUCCESS,
-  GET_BOOKS_FAILURE
+  GET_BOOKS_FAILURE,
+  SET_BOOKMARK_REQUEST
 } from '../actions/books'
 
 const initialState = {
   books: [],
+  bookmarkedBooks: [],
   isFetched: false,
   error: false
 }
@@ -22,13 +22,9 @@ export default (state = initialState, action) => {
       };
 
     case GET_BOOKS_SUCCESS:
-      const mappedBooks = mapper.mapBooks(action.payload);
-
-      console.log('Mapped Books: ', mappedBooks);
-      
       return {
         ...state,
-        books: mappedBooks,
+        books: action.payload,
         isFetched: true,
         error: false
       };
@@ -39,11 +35,19 @@ export default (state = initialState, action) => {
         error: true
       }
 
+    case SET_BOOKMARK_REQUEST:
+      const book = state.books.find(book => book.id === action.payload);
+      return {
+        ...state,
+        bookmarkedBooks: [...state.bookmarkedBooks, book]
+      }
+
     default:
       return state
   }
 }
 
 export const booksSelector = (state) => state.booksReducer.books;
+export const bookmarkedBooksSelector = (state) => state.booksReducer.bookmarkedBooks;
 export const isFetchedSelector = (state) => state.booksReducer.isFetched;
 export const errorSelector = (state) => state.booksReducer.error;

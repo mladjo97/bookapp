@@ -18,7 +18,6 @@ class BookFeed extends Component {
   }
 
   componentDidMount() {
-    console.log('BookFeed didMound!');
     this.props.getBooks();
   }
   

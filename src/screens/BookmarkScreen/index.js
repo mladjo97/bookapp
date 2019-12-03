@@ -1,19 +1,13 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text
-} from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
-const WelcomeScreen = ({ ...props }) => {
-  console.log(props.navigation)
+const BookmarkScreen = ({ ...props }) => {
   return (
     <View style={styles.screen}>
-      <Text>Welcome Screen!</Text>
+      <Text>BookmarksScreen</Text>
     </View>
   );
-};
-
+}
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -22,4 +16,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default WelcomeScreen;
+export default BookmarkScreen;

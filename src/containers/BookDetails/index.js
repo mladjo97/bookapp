@@ -1,12 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Image, Button } from 'react-native';
 
 import styles from './styles';
+import { setBookmark } from '../../actions/books';
 
 const BookDetails = ({ book, ...props }) => {
-  
-  const onRatingHandler = () => {
-    console.log('Rating!');
+
+  const onBookmarkHandler = () => {
+    props.setBookmark(book.id);
   }
 
   return (
@@ -29,10 +31,14 @@ const BookDetails = ({ book, ...props }) => {
         </View>
       </View>
       <View style={styles.actions}>
-        <Button title="Give a rating" onPress={onRatingHandler} />
-      </View>      
+        <Button title="Bookmark" onPress={onBookmarkHandler} />
+      </View>
     </View>
   )
 };
 
-export default BookDetails;
+const mapDispatchToProps = {
+  setBookmark
+};
+
+export default connect(null, mapDispatchToProps)(BookDetails);

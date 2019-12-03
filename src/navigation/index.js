@@ -10,11 +10,12 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import WelcomeScreen from './WelcomeScreen';
-import ProfileScreen from './ProfileScreen';
-import FeedScreen from './FeedScreen';
-import SettingsScreen from './SettingsScreen';
-import BookDetailsScreen from './BookDetailsScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import FeedScreen from '../screens/FeedScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import BookDetailsScreen from '../screens/BookDetailsScreen';
+import BookmarkScreen from '../screens/BookmarkScreen';
 
 
 // Dashboard Tab Navigation
@@ -25,6 +26,15 @@ const DashboardTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ focused }) => {
           const iconName = `home${focused ? '' : '-outline'}`;
+          return <MaterialCommunityIcons name={iconName} size={30} />
+        }
+      }
+    },
+    Bookmarks: {
+      screen: BookmarkScreen,
+      navigationOptions: {
+        tabBarIcon: ({ focused }) => {
+          const iconName = `bookmark${focused ? '' : '-outline'}`;
           return <MaterialCommunityIcons name={iconName} size={30} />
         }
       }
@@ -72,14 +82,14 @@ const DashboardStackNavigator = createStackNavigator(
         return {
           headerTitle: navigation.getParam('book').title,
           headerLeft: (
-            <MaterialIcons 
-              name="keyboard-arrow-left" 
-              size={30} 
+            <MaterialIcons
+              name="keyboard-arrow-left"
+              size={30}
               onPress={() => navigation.pop()}
-              />
+            />
           )
         }
-      }     
+      }
     }
   },
   {
@@ -107,9 +117,6 @@ const AppDrawerNavigator = createDrawerNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
   Dashboard: {
     screen: AppDrawerNavigator
-  },
-  Welcome: {
-    screen: WelcomeScreen
   }
 });
 

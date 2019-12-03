@@ -1,5 +1,6 @@
 import config from "../../config";
 
+// this was used for firebase data mapping
 const mapBooks = (payload) => {
   const { documents } = payload;
   return documents.map(book => {
