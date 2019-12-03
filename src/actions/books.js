@@ -6,6 +6,7 @@ export const GET_BOOKS_SUCCESS = 'GET_BOOKS_SUCCESS';
 export const GET_BOOKS_FAILURE = 'GET_BOOKS_FAILURE';
 
 export const SET_BOOKMARK_REQUEST = 'SET_BOOKMARK_REQUEST';
+export const REMOVE_BOOKMARK_REQUEST = 'REMOVE_BOOKMARK_REQUEST';
 
 export const getBooks = () => dispatch => {
   return dispatch({
@@ -24,6 +25,13 @@ export const getBooks = () => dispatch => {
 export const setBookmark = (bookId) => dispatch => {
   return dispatch({
     type: SET_BOOKMARK_REQUEST,
+    payload: bookId
+  });
+}
+
+export const removeBookmark = (bookId) => dispatch => {
+  return dispatch({
+    type: REMOVE_BOOKMARK_REQUEST,
     payload: bookId
   });
 }

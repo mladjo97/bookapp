@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import { View, Text, Image, Button } from 'react-native';
 
 import styles from './styles';
-import { setBookmark } from '../../actions/books';
+import { setBookmark, removeBookmark } from '../../actions/books';
+import { bookmarkedBooksSelector } from '../../reducers/books';
 
 const BookDetails = ({ book, ...props }) => {
 
   const onBookmarkHandler = () => {
     props.setBookmark(book.id);
+  }
+
+  const onRemoveBookmarkHandler = () => {
+    props.removeBookmark(book.id);
   }
 
   return (
@@ -28,17 +33,31 @@ const BookDetails = ({ book, ...props }) => {
           <Text style={styles.detailsInfo}>{book.title}</Text>
           <Text style={styles.detailsHeader}>Author</Text>
           <Text style={styles.detailsInfo}>{book.author}</Text>
+          <Text style={styles.detailsHeader}>Category</Text>
+          <Text style={styles.detailsInfo}>{book.category}</Text>
         </View>
       </View>
       <View style={styles.actions}>
-        <Button title="Bookmark" onPress={onBookmarkHandler} />
+        {
+          props.bookmarkedBooks.find(bookmarked => bookmarked.id === book.id) ?
+          <Button title="Remove Bookmark" onPress={onRemoveBookmarkHandler} /> :
+          <Button title="Bookmark" onPress={onBookmarkHandler} />
+
+        }
       </View>
     </View>
   )
 };
 
+const mapStateToProps = state => {
+  return {
+    bookmarkedBooks: bookmarkedBooksSelector(state)
+  }
+}
+
 const mapDispatchToProps = {
-  setBookmark
+  setBookmark,
+  removeBookmark
 };
 
-export default connect(null, mapDispatchToProps)(BookDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(BookDetails);

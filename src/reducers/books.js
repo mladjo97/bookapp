@@ -2,7 +2,8 @@ import {
   GET_BOOKS_REQUEST,
   GET_BOOKS_SUCCESS,
   GET_BOOKS_FAILURE,
-  SET_BOOKMARK_REQUEST
+  SET_BOOKMARK_REQUEST,
+  REMOVE_BOOKMARK_REQUEST
 } from '../actions/books'
 
 const initialState = {
@@ -40,6 +41,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         bookmarkedBooks: [...state.bookmarkedBooks, book]
+      }
+
+    case REMOVE_BOOKMARK_REQUEST:
+      const books = state.bookmarkedBooks.filter(book => book.id !== action.payload);
+      return {
+        ...state,
+        bookmarkedBooks: books
       }
 
     default:

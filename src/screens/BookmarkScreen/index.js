@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import BookmarkFeed from '../../containers/BookmarkFeed';
 
 const BookmarkScreen = ({ ...props }) => {
   return (
     <View style={styles.screen}>
-      <Text>BookmarksScreen</Text>
+      <BookmarkFeed navigation={props.navigation} />
     </View>
   );
 }
