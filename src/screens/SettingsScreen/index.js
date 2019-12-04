@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from 'react-native';
 const SettingsScreen = ({ ...props }) => {
   return (
     <View style={styles.screen}>
-      <Text>SettingsScreen</Text>
+      <Text>SettingsScreen!</Text>
     </View>
   );
 }

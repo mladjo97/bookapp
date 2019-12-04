@@ -16,7 +16,6 @@ import SettingsScreen from '../screens/SettingsScreen';
 import BookDetailsScreen from '../screens/BookDetailsScreen';
 import BookmarkScreen from '../screens/BookmarkScreen';
 
-
 // Dashboard Tab Navigation
 const DashboardTabNavigator = createBottomTabNavigator(
   {

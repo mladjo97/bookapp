@@ -2,13 +2,10 @@ import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, View, Dimensions } from 'react-native';
 
-import bookstores from './bookstores.json'; // static json data for testing
-
-const BookstoresMap = ({...props}) => {
+const BookstoresMap = ({ centerLat, centerLon, bookstores }) => {
 
   const renderBookstores = () => {
     return bookstores.map(bookstore => {
-      console.log(bookstore);
       return (
         <Marker
           key={bookstore.id}
@@ -30,7 +27,12 @@ const BookstoresMap = ({...props}) => {
         style={styles.mapStyle}
         showsUserLocation={true}
         showsMyLocationButton={true}
-        region={{ latitude: 45.2671, longitude: 19.8335, latitudeDelta: 0.2, longitudeDelta: 0.2 }}
+        region={{ 
+          latitude: centerLat,
+          longitude: centerLon,
+          latitudeDelta: 0.2,
+          longitudeDelta: 0.2
+        }}
       >
         {
           renderBookstores()
